@@ -1,10 +1,12 @@
 from tkinter import *
 from tkinter.ttk import *
 from tkinter import messagebox
-import pyqrcode
+#import pyqrcode
 import mysql.connector
 from fpdf import FPDF
 import datetime
+
+#the pyqrcode package crashes the project after making the one bill, better we remove this feature for now.
 
 #mysql connectivity is done here only
 my=mysql.connector.connect(user="root", password="root123", host="127.0.0.1", database="restaurants")
@@ -79,8 +81,8 @@ def place_order():
 #Bill is made here in this function
 #Note Date and time can not be entered in this function
 def billmaking(orderno,name, phonenum, amount, paymode, mode, year, month, date, hour, minute):
-    qr=pyqrcode.create(f"{orderno}\n{name}\n{l1.insert(0,END)}\n{amount}\n{paymode}")
-    qr.png(f"{orderno}.png", scale=2)
+#    qr=pyqrcode.create(f"{orderno}\n{name}\n{l1.insert(0,END)}\n{amount}\n{paymode}")
+#    qr.png(f"{orderno}.png", scale=2)
     pdf.add_page()
     pdf.set_font("Arial", "B", 16)
     pdf.cell(200, 10,txt="Centrum Stravovania", align='C', ln=1)
@@ -106,7 +108,7 @@ def billmaking(orderno,name, phonenum, amount, paymode, mode, year, month, date,
     pdf.cell(200, 10, txt=f"Mode of Payment : {paymode}", align='L', ln=line+3)
     pdf.cell(200, 10, txt=" ", align='L', ln=line+4)
     pdf.cell(200, 10, txt="Thank for Visiting/Ordering from us", align='C', ln=line+5)
-    pdf.image(f"{orderno}.png", 170, 200)
+#    pdf.image(f"{orderno}.png", 170, 200)
     pdf.output(f"{orderno}.pdf")
 
 #record is entered here to mysql
