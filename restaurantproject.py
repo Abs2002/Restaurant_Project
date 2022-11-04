@@ -6,6 +6,8 @@ import mysql.connector
 from fpdf import FPDF
 import datetime
 
+#this is a comment for the testing
+
 #the pyqrcode package crashes the project after making the one bill, better we remove this feature for now.
 
 #mysql connectivity is done here only
